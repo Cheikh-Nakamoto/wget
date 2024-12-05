@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-hyper = "1.5.1"
 regex = "1.11.1"
+hyper = { version = "0.14", features = ["full"] }
+tokio = { version = "1", features = ["full", "fs", "io-util"] }
 

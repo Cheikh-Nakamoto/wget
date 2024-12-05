@@ -1,10 +1,10 @@
 pub use std::env;
 use regex::Regex;
 
-
+#[derive(Debug, Clone)]
 pub struct CLI {
-   pub link: String,
-   pub  flags: Vec<String>,
+    pub link: String,
+    pub flags: Vec<String>,
 }
 
 impl CLI {
@@ -17,8 +17,11 @@ impl CLI {
             panic!("No link provided");
         }
 
-        let link = args[args.len() - 1].clone();
-        let _= Self::check_link(link.clone());
+        let link = match args.len() {
+            1 => args[0].clone(),
+            _ => args[args.len() - 1].clone().trim().to_string(),
+        };
+    
         let flags = args
             .iter()
             .filter(|&arg| arg.starts_with("-"))
@@ -30,7 +33,7 @@ impl CLI {
             panic!("Invalid flags provided");
         }
 
-        CLI { link, flags }
+        CLI { link: link.to_string(), flags }
     }
 
     // Vérifie si les flags sont valides
@@ -51,8 +54,10 @@ impl CLI {
         args.iter().all(|flag| valid_flags.contains(flag))
     }
 
-    pub fn check_link(link:String) -> bool {
-        let url_regex = Regex::new(r"^(https?://)?(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+(\/[^\s]*)?$").unwrap();
+    pub fn check_link(link: String) -> bool {
+        let url_regex = Regex::new(
+            r"^(https?://)?(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+(\/[^\s]*)?$"
+        ).unwrap();
         if !url_regex.is_match(&link) {
             panic!("Invalid URL");
         }
