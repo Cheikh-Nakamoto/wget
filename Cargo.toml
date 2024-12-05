@@ -1,0 +1,8 @@
+[package]
+name = "wget_rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+hyper = "1.5.1"
+reqwest = "0.12.9"
