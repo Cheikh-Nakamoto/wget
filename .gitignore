@@ -1,0 +1,23 @@
+# Ignorer le dossier de compilation cible
+/target/
+
+# Ignorer les fichiers de cache de Cargo
+**/*.rs.bk
+
+# Ignorer les fichiers de log de Cargo
+cargo.lock
+
+# Ignorer les fichiers générés par Rust Analyzer et d'autres outils IDE
+/.idea/
+/.vscode/
+/*.sublime-workspace
+/*.sublime-project
+
+# Ignorer les fichiers temporaires générés par l'éditeur (ex: VSCode, Sublime)
+*.swp
+*.swo
+*.log
+
+# Ignorer les fichiers de configuration générés par les IDE (ex: IntelliJ, VSCode)
+.idea/
+/.vscode/

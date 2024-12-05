@@ -1,8 +1,8 @@
-use std::env;
+pub use std::env;
 
 pub struct CLI {
-    link: String,
-    flags: Vec<String>,
+   pub link: String,
+   pub  flags: Vec<String>,
 }
 
 impl CLI {

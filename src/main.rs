@@ -1,6 +1,7 @@
-pub mod CLI;
-use crate::flag::CLI;
 
+mod cmd;
+
+use cmd::flag::CLI; 
 fn main() {
     let cli = CLI::flags();
 
