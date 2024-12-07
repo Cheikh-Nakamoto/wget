@@ -39,14 +39,14 @@ impl CLI {
     // Vérifie si les flags sont valides
     pub fn valid_flag(args: &[String]) -> bool {
         let valid_flags: Vec<String> = vec![
-            "-B".to_string(), // background
-            "-O".to_string(), // output file
-            "-P".to_string(), // directory prefix
+            "-b".to_string(), // background
+            "-o".to_string(), // output file
+            "-p".to_string(), // directory prefix
             "--rate-limit".to_string(), // limit download speed
             "-i".to_string(), // input file (multiple downloads)
             "--mirror".to_string(), // mirror website
-            "-R".to_string(), // reject extensions
-            "-X".to_string(), // exclude directories
+            "-r".to_string(), // reject extensions
+            "-x".to_string(), // exclude directories
             "--convert-links".to_string() // convert links for offline use
         ];
 
