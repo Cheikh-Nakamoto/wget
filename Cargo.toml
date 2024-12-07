@@ -7,4 +7,5 @@ edition = "2021"
 regex = "1.11.1"
 hyper = { version = "0.14", features = ["full"] }
 tokio = { version = "1", features = ["full", "fs", "io-util"] }
+hyper-native-tls = "0.3.0"
 
