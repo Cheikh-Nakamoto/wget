@@ -48,7 +48,7 @@ func Progression(reader io.Reader, totalZise int64) io.Reader {
 				remainingTime := time.Duration(float64(totalZise-downloaded)/speed) * time.Second
 
 				// Afficher la progression
-				fmt.Printf("\r%10s / %10s [%s] %10.2f%% %10s %10s", utils.ConvertSize(downloaded), utils.ConvertSize(totalZise), bar, percent, utils.ConvertSpeed(speed/1024), FormatStrSpace(remainingTime))
+				fmt.Printf("\r%10s / %10s [%s] %10.2f%% %10s %-10s", utils.ConvertSize(downloaded), utils.ConvertSize(totalZise), bar, percent, utils.ConvertSpeed(speed/1024), remainingTime)
 
 			case <-done:
 				fmt.Println("finished at", utils.FormatDate(time.Now()))
@@ -58,18 +58,4 @@ func Progression(reader io.Reader, totalZise int64) io.Reader {
 		}
 	}()
 	return io.TeeReader(reader, progressWriter{progress, done})
-}
-
-func FormatStrSpace(d interface{}, size ...int) string {
-	s := fmt.Sprintf("%s", d)
-	n := 10
-	if len(size) > 0 {
-		n = size[0]
-	}
-
-	if len(s) < n {
-		s =  s + strings.Repeat(" ", n-len(s))
-	}
-
-	return s
 }
