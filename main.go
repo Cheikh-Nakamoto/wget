@@ -41,7 +41,7 @@ func main() {
 		for _, url := range urls {
 			infos, err := utils.GetFileInfo(url)
 			if err != nil {
-				fmt.Println("IMPOSIBLE TO GET FILE INFO")
+				fmt.Println("Impossible to get file info for", url)
 				continue
 			}
 			if flags["B"] == "true" {

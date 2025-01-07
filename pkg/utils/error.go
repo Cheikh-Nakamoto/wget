@@ -4,13 +4,6 @@ import (
 	"fmt"
 )
 
-func DisplayError(err error) {
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-}
-
 func HttpCode(code int) string {
 	var message string
 	switch code {
