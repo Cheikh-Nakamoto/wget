@@ -40,7 +40,10 @@ func main() {
 	} else {
 		for _, url := range urls {
 			infos, err := utils.GetFileInfo(url)
-			utils.DisplayError(err)
+			if err != nil {
+				fmt.Println("IMPOSIBLE TO GET FILE INFO")
+				continue
+			}
 			if flags["B"] == "true" {
 				err = download.DownloadBackground(url, flags["P"])
 			} else if flags["rate-limit"] != "" {
@@ -85,7 +88,9 @@ func main() {
 
 			if flags["O"] != "" {
 				err = utils.RenameFile(infos.FileName, flags["O"])
-				utils.DisplayError(err)
+				if err != nil {
+					fmt.Println("Error:", err)
+				}
 			}
 		}
 	}
