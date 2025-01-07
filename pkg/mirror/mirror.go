@@ -120,11 +120,13 @@ func SavingFile(page Page, url, linkbase, dirpath string) error {
 		return err
 	}
 
-	if AllowedSave(filename) {
+	re := regexp.MustCompile(`(https?:|#)`)
+	
+	if AllowedSave(filename) && !re.MatchString(filename) {
 		// Créer les répertoires nécessaires
 		err = os.MkdirAll(filepath.Dir(filename), os.ModePerm)
 		if err != nil {
-			fmt.Println("Erreur lors de la création des répertoires: ", err)
+			// fmt.Println("Erreur lors de la création des répertoires: ", err)
 			return err
 		}
 
