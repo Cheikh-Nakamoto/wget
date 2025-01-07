@@ -60,7 +60,7 @@ func DownloadPage(url string) (*Page, error) {
 	totalSize := resp.ContentLength
 	if totalSize < 0 {
 		totalSize *= -1
-		fmt.Println("Length: unspecified [text/html]\n")
+		fmt.Println("Length: unspecified [text/html]")
 	} else {
 		fmt.Println("Content-Length: " + strconv.FormatInt(totalSize, 10) + " (" + utils.ConvertSize(totalSize) + ")" + "\n")
 	}
